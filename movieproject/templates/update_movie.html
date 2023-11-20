@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-4 bg-white p-4 rounded-lg shadow-sm">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="bg-secondary text-center">Update Movie</h1>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="{{ form.title.id_for_label }}">Title:</label>
+          {{ form.title }}
+          {% if form.title.errors %}
+            <div class="text-danger">
+              {{ form.title.errors }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.description.id_for_label }}">Description:</label>
+          {{ form.description }}
+          {% if form.description.errors %}
+            <div class="text-danger">
+              {{ form.description.errors }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.year.id_for_label }}">Year:</label>
+          {{ form.year }}
+          {% if form.year.errors %}
+            <div class="text-danger">
+              {{ form.year.errors }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.img.id_for_label }}">Image:</label>
+          {{ form.img }}
+          {% if form.img.errors %}
+            <div class="text-danger">
+              {{ form.img.errors }}
+            </div>
+          {% endif %}
+        </div>
+        <button type="submit" class="btn btn-secondary btn-block mt-4">Submit</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+<style>
+  body {
+    background-color: aliceblue;
+  }
+  textarea {
+    height: 80px;
+  }
+</style>
+
+{% endblock %}

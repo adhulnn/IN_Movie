@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid mt-2">
+    {% for m in messages %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{ m }}</strong>
+    </div>
+    {% endfor %}
+    <div class="row">
+        {% for i in movie_list %}
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <div class="card mt-2">
+                <img class="card-img-top" src="{{ i.img.url }}" alt="Card image cap" height="250px">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.title }}</h5>
+                    <h6 class="card-title">Year: {{ i.year }}</h6>
+                    <a class="btn btn-primary btn-block mt-2 pt-1 pb-1" href="{% url 'movieapp:details' i.id %}">Details</a>
+                    <a class="btn btn-secondary col-9 mt-2" href="{% url 'movieapp:update_movie' i.id %}">Update</a>
+                    <a class="btn btn-danger  mt-2 pl-3" href="{% url 'movieapp:delete_movie' i.id %}">&times;</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

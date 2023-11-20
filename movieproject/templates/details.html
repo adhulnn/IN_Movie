@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="card">
+  <div class="row no-gutters">
+      <div class="col-md-8">
+          <div class="card-body">
+              <h1 class="card-title"><b>Title :</b> {{ movies.title }}</h1>
+                <h2 class="card-text"><b>Description :</b> {{ movies.description }}</h2>
+                <h2 class="card-text"><b>Year :</b> {{ movies.year }}</h2>
+                <a href="{% url 'movieapp:view_movie' %}" class="btn btn-secondary btn-lg col-2 mt-4 float-left">Back</a>
+                <a class="btn btn-success btn-lg col-2 ml-2 mt-4" href="{% url 'movieapp:update_movie' movies.id %}">Update</a>
+                <a class="btn btn-danger btn-lg col-2 mt-4 ml-1" href="{% url 'movieapp:delete_movie' movies.id %}">Delete</a>
+
+          </div>
+      </div>
+      <div class="col-md-4">
+          <img src="{{ movies.img.url }}" alt="movie-image" class="card-img" height="670px" width="480px">
+      </div>
+  </div>
+</div>
+
+{%endblock%}
